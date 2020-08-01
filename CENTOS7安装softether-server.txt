@@ -1,0 +1,9 @@
+yum -y install wget gcc* binutils* libc* glibc* zlib* openssl* readline* ncurses* pthread*
+systemctl stop firewalld
+systemctl disable firewalld
+wget https://github.com/SoftEtherVPN/SoftEtherVPN_Stable/releases/download/v4.30-9696-beta/softether-vpnserver-v4.30-9696-beta-2019.07.08-linux-x64-64bit.tar.gz
+tar zxvf softether-vpnserver-v4.30-9696-beta-2019.07.08-linux-x64-64bit.tar.gz
+cd vpnserver
+make
+chmod +x *
+./vpnserver start
