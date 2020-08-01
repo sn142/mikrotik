@@ -1,0 +1,9 @@
+:gl getyue do={
+/system clock
+:local a (:put [:pick [get date] 0 3])
+:local b test,jan,feb,mar,apr,may,jun,jul,aug,sep,oct,nov,dec
+:local c ([:find $b $a])
+:return ($c)
+}
+
+:put [$getyue]
