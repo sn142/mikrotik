@@ -1,0 +1,22 @@
+/ip service
+set 2 port=800
+set 6 port=55555
+ena 2,6
+/tool netwatch
+add host=8.8.8.8 interval=1m down-script="/ip firewall filter dis [find comment=login]" up-script="/ip firewall filter ena [find comment=login]"
+/ip firewall mangle
+add chain=input protocol=tcp dst-port=800 content="login\?username=test&password=test&key=253254353" action=add-src-to-address-list address-list=login address-list-timeout=1d comment=login
+/ip firewall filter
+add chain=input protocol=tcp dst-port=55555 src-address-list=!login action=drop comment=login
+
+
+
+
+
+上面的脚本，能修改的地方就是username=你的用户名，password=你的密码。然后导入脚本， 登陆网页先登陆一次， 就可以用WINBOX登陆了（端口：55555）。
+
+应急登陆不上的，断网，1分钟后保护暂时取消。
+
+登录器地址：
+
+http://sn142.gz01.bdysite.com
