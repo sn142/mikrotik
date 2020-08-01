@@ -1,0 +1,73 @@
+qm importovf 100 /ROS6/ROS6.ovf local-lvm
+
+这时候能看到100（ROS6）的虚拟机了，这个时候千万不要启动
+
+3、设置ROS授权，使用WinSCP打开路径/etc/pve/nodes/pve/qemu-server/，双击100.conf文件可以直接编辑，在第三行ide0最后添加以下内容后保存(下行全部复制，标点也不能漏）
+
+
+,model=VMware%20Virtual%20IDE%20Hard%20Drive,serial=00000000000000000001
+
+
+4、在ros系统下添加网卡后，现在可以启动ROS虚拟机了。
+
+
+PVE挂载硬盘指令如下：注意，所有指令必需区分大小写。
+
+列出主机硬盘ID：
+
+root@pve:~# ls -l /dev/disk/by-id/
+
+所列出硬盘码凡带part1,2,3等此类，为盘下分区，不是整盘。必需复制其part之上的整盘码。如果不带具体硬盘厂商名称，诸如intel 之类的字样，不是物理整盘，不要挂载到虚拟机中。
+
+把硬盘挂载至具体虚拟机：
+root@pve:~#qm set 100 --sata1 /dev/disk/by-id/ata-INTEL_SSDSA2BW160G3H_CVPR1322011V160DGN
+
+ata-INTEL_SSDSA2BW160G3H_CVPR1322011V160DGN  这一串就是完整物理硬盘码，是要复制粘贴的内容（带intel字样，即为intel固态硬盘，但不要把宿主盘挂上去，所以要注意仔细观察区分）。指令中  100  为虚拟机ID，即显示在后台左侧的三位编号数字     sata1硬盘通道类型，1为数字序列，也可以是2，3，4，5，随便你。后面则是粘贴的准备挂载的硬盘码。用键盘快捷键无用，必需使用鼠标右键选择粘贴。
+
+断电无法进入PVE后台处理方法，对已经自动随机启动的虚拟机关停。把虚拟机接显示器与键盘即可操作。先用root用户名与密码登陆，再用如下代码
+
+查看虚拟机状态
+root@pve:~#pvesh get /cluster/resources
+取得虚拟机当前状态
+root@pve:~#pvesh get /nodes/pve/qemu/100/status/current
+关闭虚拟机
+root@pve:~#pvesh create /nodes/pve/qemu/100/status/stop
+
+命令行中的pve为你的总虚拟机节点名称。100为其下虚拟机ID编号。请对号关闭虚拟机，一般就能解决问题了。
+
+1、PVE的内核开启支持VD-T直通的IOMMU及相关模块
+nano /etc/default/grub
+GRUB_CMDLINE_LINUX_DEFAULT="quiet intel_iommu=on video=efifb:off"
+
+2、更新参数
+update-grub
+
+3、添加参数
+nano /etc/modules
+vfio
+vfio_iommu_type1
+vfio_pci
+vfio_virqf
+
+4、添加驱动黑名单
+echo "blacklist snd_hda_intel" >> /etc/modprobe.d/pve-blacklist.conf
+echo "blacklist snd_hda_codec_hdmi" >> /etc/modprobe.d/pve-blacklist.conf
+echo "blacklist i915" >> /etc/modprobe.d/pve-blacklist.confupdate-initramfs -u
+
+5、GPU信息确认
+lspci    00:02.0
+lspci -n -s 00:02  8086:3e90
+
+6、添加核显指定到VFIO模块
+echo "options vfio-pci ids=8086:3e90" >/etc/modprobe.d/vfio.conf
+
+7、创建Win10虚拟机，用默认SeaBIOS方式，硬件的Machine改为q35，硬盘格式用SATA格式
+
+8、安装好win10后开启远程桌面
+
+9、直通独显GPU
+nano /etc/pve/qemu-server/101.conf
+args: -device vfio-pci,host=00:02.0,addr=0x18,x-igd-opregion=on
+vga: std
+
+10、启动win10，安装显卡驱动

@@ -1,0 +1,6 @@
+yum -y install httpd httpd-devel
+yum -y install mariadb mariadb-server mariadb-libs mariadb-devel
+mysql_secure_installation
+yum -y install php
+yum -y install php-mysql
+yum -y install php-gd php-ldap php-odbc php-pear php-xml php-xmlrpc php-mbstring php-snmp php-soap curl curl-devel php-bcmath
