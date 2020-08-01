@@ -1,0 +1,12 @@
+/ppp active
+:foreach i in=[find server=l2tp] do={
+:local test
+:set test [get $i caller-id]
+/tool bandwidth-test $test user=admin password=123 duration=5s direction=transmit do={
+:if ($status="connecting") do={
+/ppp secret
+dis [find name=$test]
+/ppp active
+rem [find caller-id=$test]
+}
+}

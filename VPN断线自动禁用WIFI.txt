@@ -1,0 +1,15 @@
+/log error "断开自动禁用WIFI"
+
+/interface l2tp-client
+:foreach i in=[find running=no] do={
+/interface wireless dis [find name=[get $i comment]]
+}
+
+
+
+/log error "连接自动启用WIFI"
+
+/interface l2tp-client
+:foreach i in=[find running=yes] do={
+/interface wireless ena [find name=[get $i comment]]
+}

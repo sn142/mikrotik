@@ -1,0 +1,6 @@
+/ip dhcp-server
+:if ([:len [find invalid=yes]]>0) do={
+:foreach i in=[/ip dhcp-server find invalid=yes] do={
+/ip dhcp-server lease rem [find server=[/ip dhcp-server get [$i] name]]
+}
+}
