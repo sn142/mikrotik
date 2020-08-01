@@ -1,0 +1,19 @@
+/ip address
+
+:gl n
+:gl b
+:gl bb
+
+:set n [get [find interface=pppoe-out1] address ]
+
+:if ($n != $b) do={
+:set b [get [find interface=pppoe-out1] address ]
+
+:set bb ""
+
+:set bb [:pick $b 0 ([:find $b "/"])]
+
+/ip fir nat set [find comment~"wanip"] dst-address=$bb
+
+/ip fir nat set [find comment~"wannet"] to-address=$bb
+}
