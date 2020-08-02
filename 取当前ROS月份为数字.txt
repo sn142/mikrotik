@@ -3,7 +3,12 @@
 :local a (:put [:pick [get date] 0 3])
 :local b test,jan,feb,mar,apr,may,jun,jul,aug,sep,oct,nov,dec
 :local c ([:find $b $a])
+:if ([:len $c] = 1) do={
+:return ("0" . $c)
+}
+:if ([:len $c] = 2) do={
 :return ($c)
+}
 }
 
 :gl getri do={
