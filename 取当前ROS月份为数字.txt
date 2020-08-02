@@ -6,4 +6,14 @@
 :return ($c)
 }
 
-:put [$getyue]
+:gl getri do={
+/system clock
+:local a ([:pick [get date] 4 6])
+:return ($a)
+}
+
+:gl getnian do={
+/system clock
+:local a ([:pick [get date] 7 11])
+:return ($a)
+}
