@@ -22,3 +22,13 @@
 :local a ([:pick [get date] 7 11])
 :return ($a)
 }
+
+
+
+/ppp secret
+:foreach i in=[find comment!=""] do={
+:put [get $i comment]
+:if (([$getnian] . [$getyue] . [$getri]) > [get $i comment]) do={
+dis $i
+}
+}
