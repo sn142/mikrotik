@@ -1,0 +1,4 @@
+/interface bridge nat
+:for i from=1 to=240 do={add chain=srcnat action=src-nat src-mac-address=([/interface vrrp get [find name=("vrrp" . $i)] mac-address] . "/FF:FF:FF:FF:FF:FF") to-src-mac-address=("00:00:00:00:00" . [:pick [/interface vrrp get [find name=("vrrp" . $i)] mac-address] 14 17])
+add chain=dstnat action=dst-nat dst-mac-address=("00:00:00:00:00" . [:pick [/interface vrrp get [find name=("vrrp" . $i)] mac-address] 14 17] . "/FF:FF:FF:FF:FF:FF") to-dst-mac-address=[/interface vrrp get [find name=("vrrp" . $i)] mac-address]
+}
