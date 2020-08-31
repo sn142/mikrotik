@@ -21,3 +21,4 @@
 
 /interface pppoe-client
 mon 0 once do={/ip fir nat set [find comment~"wanip"] dst-address=$"local-address"}
+ 
