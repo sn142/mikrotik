@@ -1,0 +1,2 @@
+ssh -fCNR 9080:localhost:5555 root@ros.wenjie1231.com
+ssh -fCNL 192.0.0.21:1234:localhost:9080 localhost
