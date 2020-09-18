@@ -1,0 +1,25 @@
+#mac
+:global wifinumfirst 1
+:global mystringnum "9703351E8E517077816E1A0468883D1350B93D0C5843BC32E6352213A5AB1A0478223020E21DA7C2C51C67D7397850B2E509DC37296A1DCE3C6B9792D29D3E2B9577C1B478AE4D6D1BCAE1CCD42915013885217A31C62D8E1ED8A08BC60605CCB899EB09"
+:global mystringnum1 "C8CC666EC0228E2866CCC040C040868224AAACA66E84024242AACE006C6E00224428C82240AC8ACC8E2C028CC0A6860A08C20A208E0622A8EE8C4EA2CE8C22260CC8604E0CEEA8C2CE6E04CCCCCA86A86E86ACEC8ACC4C8A6C806C22A4C6AAA4C84E28CE"
+:global numfirst 0
+:global numfirst1 0
+:set numfirst [:pick [/system clock get time] 6 8]
+:set numfirst1 [:pick [/system clock get time] 3 5]
+:for testname from=1 to=5 do={
+/interface wireless set [/interface wireless find name=("wifi".$wifinumfirst)] mac-address=([:pick $mystringnum ($numfirst+$testname) ($numfirst+$testname+1)].[:pick $mystringnum1 ($numfirst1+$testname+2) ($numfirst1+$testname+3)].[:pick $mystringnum ($numfirst+$testname+4) ($numfirst+$testname+5)].[:pick $mystringnum ($numfirst1+$testname+6) ($numfirst1+$testname+7)].[:pick $mystringnum ($numfirst+$testname+8) ($numfirst+$testname+9)].[:pick $mystringnum1 ($numfirst1+$testname+10) ($numfirst1+$testname+11)].[:pick $mystringnum ($numfirst+$testname+12) ($numfirst+$testname+13)].[:pick $mystringnum ($numfirst1+$testname+14) ($numfirst1+$testname+15)].[:pick $mystringnum ($numfirst+$testname+16) ($numfirst+$testname+17)].[:pick $mystringnum ($numfirst1+$testname+18) ($numfirst1+$testname+19)].[:pick $mystringnum ($numfirst+$testname+20) ($numfirst+$testname+21)].[:pick $mystringnum1 ($numfirst1+$testname+22) ($numfirst1+$testname+23)])
+:set wifinumfirst ($wifinumfirst+1)
+}
+
+
+#ssid
+:global wifinumfirst 1
+:global wifinametochange "qsOfgpjnoHEgBWFnBFZgnoSTdUVnQXlDfDVdiWIKXLGceJMVBtABnKrXBLLfULNvPYyuXvUueYSgYvrgCJGvaxztDQTqnCVCXdpQdOucTmRbaUtlQCHXzOgFmbcbRvKUiSplHZuJlfZdBdJTVcSZDBmTjifvyigDENoARYWPlvAdHGYroTZLPADkNlqVeIXRzPNLfmgN"
+:global numfirst 0
+:global numfirst1 0
+:set numfirst [:pick [/system clock get time] 6 8]
+:set numfirst1 [:pick [/system clock get time] 3 5]
+:for testname from 1 to 5 do={
+/interface wireless set [find name=("wifi".$wifinumfirst)] ssid=([:pick $wifinametochange ($numfirst+$testname) ($numfirst+$testname+1)].[:pick $wifinametochange ($numfirst1+$testname+2) ($numfirst1+$testname+3)].[:pick $wifinametochange ($numfirst+$testname+4) ($numfirst+$testname+5)].[:pick $wifinametochange ($numfirst1+$testname+6) ($numfirst1+$testname+7)].[:pick $wifinametochange ($numfirst+$testname+8) ($numfirst+$testname+9)].[:pick $wifinametochange ($numfirst1+$testname+10) ($numfirst1+$testname+11)].$testname)
+:set wifinumfirst ($wifinumfirst+1)
+}
