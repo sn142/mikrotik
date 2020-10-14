@@ -1,0 +1,1 @@
+vpncmd /client localhost /cmd:accountconnect 364065214.softether.net
