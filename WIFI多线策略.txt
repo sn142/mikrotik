@@ -1,5 +1,5 @@
 /interface wireless
-:for i from=1 to=20 do={add name=("wifi" . $i) ssid=("wifi" . $i) master-interface=wlan1}
+:for i from=1 to=20 do={add name=("wifi" . $i) ssid=("wifi" . $i) master-interface=wlan1 comment=QQ253254353}
 
 /ip address
 :for i from=1 to=20 do={add address=("172.27." . $i . ".1/29") interface=("wifi" . $i)}
@@ -17,7 +17,7 @@
 :for i from=1 to=20 do={add src-address=("172.27." . $i . ".2-172.27." .$i. ".5") new-routing-mark=("wifi" . $i) chain=prerouting action=mark-routing passthrough=yes}
 
 /interface l2tp-client
-:for i from=1 to=20 do={add name=("l2tp-out" . $i) connect-to="1.1.1.1" user="1" password="1"}
+:for i from=1 to=20 do={add name=("l2tp-out" . $i) connect-to="1.1.1.1" user="1" password="1" comment=QQ253254353}
 
 /ip route
 :for i from=1 to=20 do={add dst-address="0.0.0.0/0" gateway=("l2tp-out" . $i) routing-mark=("wifi" . $i)}
