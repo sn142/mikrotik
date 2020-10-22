@@ -24,3 +24,5 @@
 
 /ip firewall nat
 :for i from=1 to=20 do={add chain=srcnat src-address=("172.27." . $i . ".2-172.27." .$i. ".5") out-interface=("l2tp-out" . $i) action=masquerade}
+
+
