@@ -1,0 +1,5 @@
+@rasdial vpn ppp ppp /phonebook:test.pbk
+@pause
+@rasdial vpn /disconnect
+@echo 已断开！
+@pause
