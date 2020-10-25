@@ -3,3 +3,4 @@
 @rasdial vpn /disconnect
 @echo 已断开！
 @pause
+
