@@ -8,10 +8,10 @@
 :for i from=1 to=20 do={add ranges=("172.27." . $i . ".2-172.27." .$i. ".5") name=("wifi" . $i)}
 
 /ip dhcp-server
-:for i from=1 to=20 do={add name=("wifi" . $i) interface=("wifi" . $i) address-pool=("wifi" . $i) lease-time=1d}
+:for i from=1 to=20 do={add name=("wifi" . $i) interface=("wifi" . $i) address-pool=("wifi" . $i) lease-time=1d disabled=no}
 
 /ip dhcp-server network
-:for i from=1 to=20 do={add address=("172.27." . $i . ".0/29") gateway=("172.27." . $i . ".1") disabled=no}
+:for i from=1 to=20 do={add address=("172.27." . $i . ".0/29") gateway=("172.27." . $i . ".1")}
 
 /ip firewall mangle
 :for i from=1 to=20 do={add src-address=("172.27." . $i . ".2-172.27." .$i. ".5") new-routing-mark=("wifi" . $i) chain=prerouting action=mark-routing passthrough=yes}
