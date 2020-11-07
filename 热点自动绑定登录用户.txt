@@ -1,5 +1,5 @@
 /ip hotspot host \
 make-binding [/ip hotspot host find authorized=yes] type=bypassed
 /ip hotspot ip-binding \
-set ([:len [find bypassed=yes]] - 1) address 0.0.0.0 to-address 0.0.0.0
+set [/ip hotspot ip-binding find type=bypassed] address 0.0.0.0 to-address 0.0.0.0
 /beep
