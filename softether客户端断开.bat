@@ -1,1 +1,1 @@
-vpncmd /client localhost /cmd:accountdisconnect 364065214.softether.net
+vpncmd /client localhost /cmd:accountdisconnect test
