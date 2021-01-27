@@ -1,0 +1,7 @@
+/ip dhcp-client
+:gl net1 [get [find interface=ether1] gateway]
+:gl net2 [get [find interface=ether2] gateway]
+
+/ip route
+set [find comment=net1] gateway=$net1
+set [find comment=net2] gateway=$net2
