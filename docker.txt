@@ -1,3 +1,6 @@
+docker run -itd --privileged=true --name data253254353 -v /media/root/share:/home centos /usr/sbin/init
+
+
 docker run -itd --privileged=true -v /media/root/share:/var/www/html --network=host centos /usr/sbin/init
 docker exec -it centos /bin/bash
 docker commit centos xxx
