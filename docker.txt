@@ -1,6 +1,13 @@
+docker pull centos
+docker images
 docker volume create data
 docker run -itd --privileged=true --name centos -v data:/home --network=host --restart=always centos /usr/sbin/init
 docker exec -it centos /bin/bash
 docker commit centos xxx
+docker stop centos
+docker rm centos
+docker ps -a
+docker start centos
+docker update --restart=always centos
 docker save > xxx.tar xxx
 docker load < xxx.tar
