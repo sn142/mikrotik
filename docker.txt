@@ -1,5 +1,5 @@
 docker volume create data
-docker run -itd --privileged=true --name centos -v data:/home --network=host centos /usr/sbin/init
+docker run -itd --privileged=true --name centos -v data:/home --network=host --restart=always centos /usr/sbin/init
 docker exec -it centos /bin/bash
 docker commit centos xxx
 docker save > xxx.tar xxx
