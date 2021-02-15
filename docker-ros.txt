@@ -1,0 +1,2 @@
+
+docker run -d --privileged=true --restart=always --name ros -p 2222:22 -p 8729:8729 -p 5900:5900 -p 8291:8291 -p 1194:1194 -p 1701:1701 -p 1723:1723 -p 50:50 -p 51:51 -p 500:500/udp -p 4500:4500/udp -ti evilfreelancer/docker-routeros
