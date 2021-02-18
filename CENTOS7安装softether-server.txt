@@ -7,3 +7,9 @@ cd vpnserver
 make
 chmod +x *
 ./vpnserver start
+
+
+yum -y groupinstall "Development Tools"
+yum -y install readline-devel ncurses-devel openssl-devel
+./configure
+make
