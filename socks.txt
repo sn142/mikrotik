@@ -1,2 +1,2 @@
 wget --no-check-certificate https://raw.github.com/Lozy/danted/master/install.sh -O install.sh
-bash install.sh  --port=65530 --user=aoxiang --passwd=2795864065
+bash install.sh  --port=65530 --user=user123 --passwd=password123
