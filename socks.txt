@@ -1,2 +1,6 @@
 wget --no-check-certificate https://raw.github.com/Lozy/danted/master/install.sh -O install.sh
 bash install.sh  --port=65530 --user=user123 --passwd=password123
+
+
+yum install gcc gcc-c++ automake make pam-devel openldap-devel cyrus-sasl-devel openssl-devel
+wget http://jaist.dl.sourceforge.net/project/ss5/ss5/3.8.9-8/ss5-3.8.9-8.tar.gz
