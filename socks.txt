@@ -1,5 +1,7 @@
 wget --no-check-certificate https://raw.github.com/Lozy/danted/master/install.sh -O install.sh
 bash install.sh  --port=65530 --user=user123 --passwd=password123
+/etc/init.d/sockd adduser USERNAME PASSWORD
+
 
 
 yum install gcc gcc-c++ automake make pam-devel openldap-devel cyrus-sasl-devel openssl-devel
