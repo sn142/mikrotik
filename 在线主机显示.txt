@@ -1,2 +1,0 @@
-:global i [:len [/ip firewall address-list find list=("在线主机")]]
-:log warning ("当前"."i"."台机器在线")
