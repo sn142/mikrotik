@@ -1,2 +1,0 @@
-/tool
-fetch url="http://members.3322.net/dyndns/update\?hostname=253254353.f3322.net&myip=ipaddress&wildcard=OFF&mx=mail.exchanger.ext&backmx=NO&offline=NO" user="q253254353" password="" http-method=get dst-path=ddns.txt
