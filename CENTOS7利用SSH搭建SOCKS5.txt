@@ -1,1 +1,0 @@
-ssh -CNfnqg -D 1080 -p 22 root@wenjie1231.com
