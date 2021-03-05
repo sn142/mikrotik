@@ -13,10 +13,10 @@ add chain=input protocol=tcp dst-port=55555 src-address-list=!login action=drop 
 
 
 
-����Ľű������޸ĵĵط�����username=����û�����password=������롣Ȼ����ű��� ��½��ҳ�ȵ�½һ�Σ� �Ϳ�����WINBOX��½�ˣ��˿ڣ�55555����
+上面的脚本，能修改的地方就是username=你的用户名，password=你的密码。然后导入脚本， 登陆网页先登陆一次， 就可以用WINBOX登陆了（端口：55555）。
 
-Ӧ����½���ϵģ�������1���Ӻ󱣻���ʱȡ����
+应急登陆不上的，断网，1分钟后保护暂时取消。
 
-��¼����ַ��
+登录器地址：
 
 http://sn142.gz01.bdysite.com
