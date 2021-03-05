@@ -1,1 +1,0 @@
-:for i from=150 to=254 do={queue simple add name=("" . $i) target=("172.30.13.". $i) max-limit=2M/5M}
