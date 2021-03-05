@@ -1,4 +1,4 @@
-/log error "断开自动禁用WIFI"
+/log error "鏂紑鑷姩绂佺敤WIFI"
 
 /interface l2tp-client
 :foreach i in=[find running=no] do={
@@ -7,7 +7,7 @@
 
 
 
-/log error "连接自动启用WIFI"
+/log error "杩炴帴鑷姩鍚敤WIFI"
 
 /interface l2tp-client
 :foreach i in=[find running=yes] do={
