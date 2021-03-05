@@ -3,7 +3,6 @@ Description=rinetd
 After=network.target
 
 [Service]
-Type=forking
 ExecStart=/opt/rinetd/rinetd -f -c /opt/rinetd/rinetd.conf
 
 [Install]
