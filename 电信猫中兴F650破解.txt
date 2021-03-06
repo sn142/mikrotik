@@ -1,0 +1,5 @@
+     关键点到了：确保浏览器正常登陆光猫网关，复制以下网址到浏览器地址栏并回车。
+http://192.168.1.1/cgi-bin/luci/admin/storage/copyMove?opstr=copy|/userconfig|/mnt/USB_disc1|cfg&fileLists=cfg/&_=0.5060406976503316
+
+      如果浏览器输出以下内容，说明操作成功。
+{"setRes":true,"filePath":"/userconfig","percent":100,"transId":0,"fileNum":0}
