@@ -1,0 +1,8 @@
+dir=/root
+disable-ipv6=true
+enable-rpc=true
+rpc-allow-origin-all=true
+rpc-listen-all=true
+rpc-listen-port=6800
+continue=true
+max-concurrent-downloads=3
