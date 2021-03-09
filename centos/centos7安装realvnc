@@ -1,0 +1,5 @@
+wget https://www.realvnc.com/download/file/vnc.files/VNC-Server-6.7.2-Linux-x64.rpm
+rpm -ivh VNC-Server-6.7.2-Linux-x64.rpm --nodeps --force
+vnclicense -add VKUPN-MTHHC-UDHGS-UWD76-6N36A
+systemctl enable vncserver-x11-serviced
+systemctl start vncserver-x11-serviced
