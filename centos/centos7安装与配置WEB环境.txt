@@ -1,6 +1,17 @@
 yum -y install httpd httpd-devel
 yum -y install mariadb mariadb-server mariadb-libs mariadb-devel
+systemctl enable mariadb
+systemctl enable httpd
+systemctl start mariadb
+systemctl start httpd
 mysql_secure_installation
+
+#php-5.6.14版本安装
 yum -y install php
 yum -y install php-mysql
 yum -y install php-gd php-ldap php-odbc php-pear php-xml php-xmlrpc php-mbstring php-snmp php-soap curl curl-devel php-bcmath
+
+#php-7.2版本安装
+rpm -Uvh https://mirror.webtatic.com/yum/el7/epel-release.rpm   
+rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
+yum install -y php72w php72w-opcache php72w-xml php72w-mcrypt php72w-gd php72w-devel php72w-mysql php72w-intl php72w-mbstring
