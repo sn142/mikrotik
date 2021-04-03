@@ -14,4 +14,4 @@ yum -y install php-gd php-ldap php-odbc php-pear php-xml php-xmlrpc php-mbstring
 #php-7.2版本安装
 rpm -Uvh https://mirror.webtatic.com/yum/el7/epel-release.rpm   
 rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
-yum install -y php72w php72w-opcache php72w-xml php72w-mcrypt php72w-gd php72w-devel php72w-mysql php72w-intl php72w-mbstring
+yum install -y php72w php72w-opcache php72w-xml php72w-mcrypt php72w-gd php72w-devel php72w-mysql php72w-intl php72w-mbstring php72w-embedded php72w-fpm
