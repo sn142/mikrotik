@@ -1,0 +1,40 @@
+https://jingyan.baidu.com/article/37bce2be35eee95102f3a2c9.html
+
+下载应用商店安装包：
+
+打开网页 https://store.rg-adguard.net/
+
+在搜索栏选择搜索方式“PackageFamilyName”
+
+输入搜索关键字“Microsoft.WindowsStore_8wekyb3d8bbwe”
+
+点击右边的√确定搜索
+
+win10 LTSC版如何安装应用商店Microsoft Store
+根据系统是x86还是x64选择下载安装包
+
+一共4个类型，每个类型都下载。
+
+如我的系统是X64的下载如下图的包：
+
+win10 LTSC版如何安装应用商店Microsoft Store
+把刚才下载的4个文件放在一个文件夹内，如：C:/myStore/
+
+win10 LTSC版如何安装应用商店Microsoft Store
+以管理员身份打开powershell
+
+win10 LTSC版如何安装应用商店Microsoft Store
+执行指令： cd C:/myStore 进入存储安装包的位置
+
+win10 LTSC版如何安装应用商店Microsoft Store
+指向安装命令：Add-AppxPackage *
+
+win10 LTSC版如何安装应用商店Microsoft Store
+7
+安装完成后，直接在开始菜单是看不到的
+
+需要重启一下系统
+
+重启之后在开始菜单，拉到最后就看到“应用商店的图标了”
+
+win10 LTSC版如何安装应用商店Microsoft Store
