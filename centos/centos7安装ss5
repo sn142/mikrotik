@@ -1,0 +1,77 @@
+依赖环境准备
+安装ss5依赖包
+
+sudo -i
+yum install gcc openldap-devel pam-devel openssl-devel
+
+安装SS5
+wget http://jaist.dl.sourceforge.net/project/ss5/ss5/3.8.9-8/ss5-3.8.9-8.tar.gz
+tar -vzx -f ss5-3.8.9-8.tar.gz
+cd ss5-3.8.9/
+./configure
+make
+make install
+
+设置为启动服务
+chmod a+x /etc/init.d/ss5
+chkconfig --add ss5
+chkconfig --level 345 ss5 on
+
+修改配置为基于用户名登录
+找到文件 /etc/opt/ss5/ss5.conf 并修改
+
+vi /etc/opt/ss5/ss5.conf
+
+找到
+
+#auth 0.0.0.0/0 – -
+
+改为
+
+auth 0.0.0.0/0 – u
+
+#permit - 0.0.0.0/0 – 0.0.0.0/0 – – – – -
+
+改为
+
+permit u 0.0.0.0/0 – 0.0.0.0/0 – – – – -
+
+就是把前面的#去掉，把其中的一个’-‘用’u’代替
+完成后代理功能基本上就可以使用了
+
+添加用户
+添加用户的话，编辑/etc/opt/ss5/ss5.passwd
+
+vi /etc/opt/ss5/ss5.passwd
+
+在第一行加入用户名密码，格式是用户名空格密码，如
+
+root 123456
+
+一般命令使用
+service ss5 start  //启动
+service ss5 stop   //停止
+service ss5 restart  //重启
+
+安装完成了，启动ss5服务，默认端口1080
+测试连通性可以用Proxifier 或者QQ上的代理测试
+
+修改1080端口
+方法一
+编辑/etc/sysconfig/ss5，将
+
+#SS5_OPTS=” -u root”
+
+取消注释，修改成下面这样
+
+SS5_OPTS=" -u root -b 0.0.0.0:10080"
+
+方法二
+在/etc/init.d/ss5中添加如下行
+
+export SS5_SOCKS_PORT=10080
+export SS5_SOCKS_USER=root
+
+给bash文件增加可执行权限 /etc/rc.d/init.d/ss5
+
+chmod 755 /etc/rc.d/init.d/ss5
