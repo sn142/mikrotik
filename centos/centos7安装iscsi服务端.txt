@@ -9,6 +9,8 @@ cd /iscsi/iqn.2021-06.com.disk01:192.168.77.232/tpg1/luns
 create /backstores/fileio/disk01
 cd /iscsi/iqn.2021-06.com.disk01:192.168.77.232/tpg1/acls
 create iqn.2021-06.com.disk01:192.168.77.232
+cd /iscsi/iqn.2021-06.com.disk01:192.168.77.232/tpg1
+set attribute generate_node_acls=1
 exit
 systemctl enable target
 systemctl start target
