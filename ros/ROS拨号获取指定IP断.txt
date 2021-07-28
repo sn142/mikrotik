@@ -1,0 +1,7 @@
+/system scheduler
+add disabled=yes interval=3s name=pppip on-event="/interface pppoe-client\r\
+    \nmon 0 once do={:if ((\$\"local-address\" & ~0.0.255.255) = \"119.50.0.0\
+    \") do={/system scheduler dis [find name=pppip]} else={/interface pppoe-cl\
+    ient ena 0}}" policy=\
+    ftp,reboot,read,write,policy,test,password,sniff,sensitive,romon \
+    start-time=startup
