@@ -1,4 +1,4 @@
 /ip dhcp-server lease
-:if ([:len [find status=bound]]>95) do={
-remove [find dynamic=yes]
+:if ([:len [find server=dhcp2]]>250) do={
+remove [find server=dhcp2]
 }
