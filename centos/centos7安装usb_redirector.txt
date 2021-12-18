@@ -1,0 +1,5 @@
+下载最新版usb_redirector
+https://www.incentivespro.com/downloads.html
+
+安装必要的环境
+yum -y install kernel-devel-'uname -r' psmisc make gcc chkconfig
