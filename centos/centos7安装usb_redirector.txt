@@ -3,3 +3,11 @@ https://www.incentivespro.com/downloads.html
 
 安装必要的环境
 yum -y install kernel-devel-'uname -r' psmisc make gcc chkconfig
+
+
+usbsrv -list
+usbsrv -unshare 4
+usbsrv -unshare 9
+usbsrv -list
+usbsrv share 4
+usbsrv share 9
