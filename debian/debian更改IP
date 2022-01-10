@@ -1,0 +1,10 @@
+/etc/network/interfaces
+
+allow-hotplug enp3s0
+iface enp3s0 inet static
+address 192.168.11.211
+netmask 255.255.255.0
+gateway 192.168.11.254
+
+/etc/resolv.conf
+nameserver 8.8.8.8
