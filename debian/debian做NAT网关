@@ -1,0 +1,19 @@
+先安装ufw组件
+apt install ufw
+
+更改ufw默认转发策略
+vim /etc/default/ufw
+DEFAULT_FORWARD_POLICY="ACCEPT"
+
+开启转发
+vim /etc/ufw/sysctl.conf
+net/ipv4/ip_forward=1
+
+添加转发条目
+vim /etc/ufw/before.rules
+-A POSTROUTING -s 192.168.1.0/24 -o ppp0 -j MASQUERADE
+COMMIT
+
+启动ufw
+ufw enable
+ufw reload
