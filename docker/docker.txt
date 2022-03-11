@@ -1,7 +1,8 @@
 docker pull centos
 docker images
 docker volume create data
-docker run -itd --privileged=true --name centos -v data:/home --network=host --restart=always centos /usr/sbin/init
+docker network create -d macvlan --subnet=192.168.66.0/24 --gateway=192.168.66.254 -o parent=ens18 lan
+docker run -itd --privileged=true --name centos -v data:/home --network=host --ip=192.168.66.1 --restart=always centos /usr/sbin/init
 docker exec -it centos /bin/bash
 docker commit centos xxx
 docker stop centos
