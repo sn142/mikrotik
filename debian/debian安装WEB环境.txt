@@ -1,6 +1,6 @@
 apt install apache2
 apt install php libapache2-mod-php7.4
-apt install php-cgi php-fpm php-curl php-gd php-mysql php-dev php-fpm php-mbstring php-xml php-xmlrpc php-zip php-common php-json
+apt install php-cgi php-fpm php-curl php-gd php-mysql php-dev php-mbstring php-xml php-xmlrpc php-zip php-common php-json
 apt install mariadb-server
 systemctl restart apache2
 systemctl restart mariadb
