@@ -1,0 +1,5 @@
+两个主机都运行
+
+ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
+ssh-copy-id -i  ~/.ssh/id_rsa.pub root@ip
+ssh ip
