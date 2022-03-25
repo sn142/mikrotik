@@ -1,0 +1,12 @@
+#!/bin/bash
+hostip=$(host xxxxxx.f3322.net |awk -F "has address" '{print $2}')
+sleep 1
+ip=$(ip addr |grep inet |grep ppp0 |awk -F " " '{print $2}' |awk -F "/" '{print $1}')
+sleep 1
+if [ $hostip == $ip ]
+then
+echo `date` " IP无改变。" >> ddnslog.txt
+else
+echo `date` " 更新动态域名IP为$ip" >> ddnslog.txt
+curl -u username:password http://members.3322.net/dyndns/update\?hostname=xxxxxx.f3322.net >> ddnslog.txt
+fi
