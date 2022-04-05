@@ -1,0 +1,17 @@
+#!/bin/bash
+modprobe ipip
+while true
+do
+tunip=$(host wenjie1231.com |awk -F "has address" '{print $2}')
+sleep 1
+pingcheck=$(ping 172.16.16.2 -c 1 |grep time= |awk '{print $1}')
+sleep 1
+if [ "$pingcheck" != "64" ]
+then
+ip tunnel del tun
+ip tunnel add tun mode ipip remote $tunip
+ip addr add 172.16.16.1/30 dev tun
+ip link set tun up
+fi
+sleep 1
+done
