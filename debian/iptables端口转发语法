@@ -1,0 +1,2 @@
+iptables -t nat -A PREROUTING -d 192.168.3.100 -p tcp --dport 3307 -j DNAT --to 192.168.3.101:3306
+iptables -t nat -A POSTROUTING -d 192.168.3.101 -p tcp --dport 3306 -j SNAT --to 192.168.3.100  
