@@ -1,0 +1,2 @@
+apt install sshfs
+sshfs root@192.168.1.1:/path/to/folder /path/to/mount/point
