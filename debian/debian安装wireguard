@@ -1,0 +1,41 @@
+apt update -y && apt upgrade -y
+apt install wireguard -y
+
+服务器配置
+wg genkey | tee privatekey | wg pubkey > publickey
+cat privatekey
+vim /etc/wireguard/wg0.conf
+
+[interface]
+privatekey=$privatekey-server
+address=10.0.0.1/24
+saveconfig=true
+postup=iptables -t nat -A POSTROUTING -j MASQUERADE;
+listenport=51820
+
+wg-quick up wg0
+
+另一台配置
+wg genkey | tee privatekey | wg pubkey > publickey
+cat privatekey
+vim /etc/wireguard/wg0.conf
+
+[interface]
+privatekey=$privatekey-client
+address=10.0.0.2/24
+dns=8.8.8.8
+saveconfig=true
+[peer]
+publickey=$publickey-server
+endpoint=12.34.56.78:51820
+allowedips=0.0.0.0/0
+persistentkeepalive=30
+
+wg-quick up wg0
+
+在服务器上配置客户端public key
+wg set wg0 peer $publickey-client allowed-ips 10.0.0.2/32
+
+抓包测试
+tcpdump -envi wg0 host 8.8.8.8
+
