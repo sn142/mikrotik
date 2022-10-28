@@ -1,0 +1,24 @@
+安装xl2tpd客户端
+apt install xl2tpd
+
+编辑配置
+vim /etc/xl2tpd/xl2tpd.conf
+加入内容
+[lac myvpn]
+lns = 192.168.11.241
+name = vpn_253254353@zz
+pppoptfile = /etc/ppp/peers/l2tp.l2tpd
+ppp debug = yes
+autodial = yes
+redial = yes
+
+编辑配置
+vim /etc/ppp/peers/l2tp.l2tpd
+加入内容
+user "vpn_253254353@zz"
+password "test"
+noauth
+defaultroute
+
+重启服务
+systemctl restart xl2tpd
