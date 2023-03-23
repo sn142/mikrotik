@@ -1,0 +1,11 @@
+先下载对应版本JDK
+https://jdk.java.net/archive/
+
+添加系统变量，根据实际情况修改目录位置
+export JAVA_HOME=/root/jdk-12.0.2
+export JRE_HOME=${JAVA_HOME}/jre
+export CLASSPATH=.:$JAVA_HOME/lib:$JRE_HOME/lib:$CLASSPATH
+export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH
+
+开机自动添加变量
+/etc/profile文件最后末尾添加即可。
