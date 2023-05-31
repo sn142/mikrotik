@@ -1,3 +1,6 @@
 ./vanish.sh mix "socks://username:password@15.164.212.231:5555"
 ./vanish.sh inner "socks://username:password@15.164.212.231:5555" "192.168.0.0/16"
 ./vanish.sh off
+
+#!/bin/bash
+echo "server ip(1.2.4.8:1080):" && read ip && echo "username:" && read user && echo "password" && read pass && /root/vanish.sh mix "socks://$user:$pass@$ip" && /root/vanish.sh inner "socks://$user:$pass@$ip" "192.168.0.0/16" && curl cip.cc
