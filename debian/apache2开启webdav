@@ -1,0 +1,15 @@
+a2enmod dav
+a2enmod dav_fs
+更改配置文件
+Alias /webdav /var/www/webdav
+DavLockDB /var/www
+<Directory /var/www/webdav>
+    DirectoryIndex disabled
+    DAV On
+    AuthType Basic
+    AuthName "webdav"
+    AuthUserFile /var/www/passwd
+    Require valid-user
+</Directory>
+然后运行命令更改密码
+htpasswd -c /var/www/passwd webdav
