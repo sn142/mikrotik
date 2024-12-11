@@ -1,0 +1,21 @@
+cd %cd%
+%cd:~0,2%
+del /f /q ver.txt
+FlashFXP -c2 -download ftp://@server2.wenjie1231.com -localpath=%cd%\ver.txt -remotepath="/update/ver.txt"
+set /p ver=<ver.txt
+echo %ver%
+if /i "%ver%"=="20241127" (
+del /f /q *.rar
+del /f /q *.dat
+del /f /q *.pem
+del /f /q *.fqf
+del /f /q ver.txt
+) else (
+goto update
+)
+exit
+
+:update
+echo 正在更新……
+FlashFXP -c2 -download ftp://@server2.wenjie1231.com -localpath=%cd%\system%time:~-2,2%.rar -remotepath="/update/system.rar"
+winrar x -o+ *.rar \
