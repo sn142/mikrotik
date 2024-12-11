@@ -1,1 +1,1 @@
-@powershell -c start -v runas jihuo.bat
+powershell -c Start-Process runas -FilePath test.bat
