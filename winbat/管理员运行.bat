@@ -1,1 +1,1 @@
-powershell -c Start-Process runas -FilePath test.bat
+powershell -c Start-Process -WindowStyle hidden -v runas -FilePath run.bat
